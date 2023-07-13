@@ -1,0 +1,829 @@
+Ejercicio 26
+#include <iostream>
+using namespace std;
+
+class Promedio {
+public:
+    void calcularPromedio(float num1, float num2, float num3) {
+        float promedio = (num1 + num2 + num3) / 3;
+
+        if (promedio > 7) {
+            cout << "APROBADO" << endl;
+        } else {
+            cout << "MEJORE LA NOTA" << endl;
+        }
+    }
+};
+
+int main() {
+    Promedio promedioObj;
+    float numero1, numero2, numero3;
+
+    cout << "Ingrese el primer número: ";
+    cin >> numero1;
+    cout << "Ingrese el segundo número: ";
+    cin >> numero2;
+    cout << "Ingrese el tercer número: ";
+    cin >> numero3;
+
+    promedioObj.calcularPromedio(numero1, numero2, numero3);
+
+    return 0;
+
+Ejercicio 27
+
+#include <iostream>
+#include <ctime>
+
+class Calculator {
+    private:
+        int birthYear;
+        int birthMonth;
+        int birthDay;
+    
+    public:
+        void setBirthDate(int year, int month, int day) {
+            birthYear = year;
+            birthMonth = month;
+            birthDay = day;
+        }
+        
+        void calculateAge() {
+            time_t now = time(0);
+            tm* currentDate = localtime(&now);
+            
+            int currentYear = currentDate->tm_year + 1900;
+            int currentMonth = currentDate->tm_mon + 1;
+            int currentDay = currentDate->tm_mday;
+            
+            int age = currentYear - birthYear;
+            
+            if (currentMonth < birthMonth || (currentMonth == birthMonth && currentDay < birthDay)) {
+                age--;
+            }
+            
+            std::cout << "Tu edad es: " << age << " años." << std::endl;
+        }
+};
+
+int main() {
+    Calculator calculator;
+    
+    int year, month, day;
+    
+    std::cout << "Ingrese su fecha de nacimiento (año mes día): ";
+    std::cin >> year >> month >> day;
+    
+    calculator.setBirthDate(year, month, day);
+    calculator.calculateAge();
+    
+    return 0;
+}
+Ejercicio 28
+#include <iostream>
+
+class VerificadorNumero {
+    private:
+        int numero;
+    
+    public:
+        void setNumero(int num) {
+            numero = num;
+        }
+        
+        void verificarParidad() {
+            if (numero % 2 == 0) {
+                std::cout << "El número es par." << std::endl;
+            } else {
+                std::cout << "El número es impar." << std::endl;
+            }
+        }
+};
+
+int main() {
+    VerificadorNumero verificador;
+    
+    int numero;
+    
+    std::cout << "Ingrese un número: ";
+    std::cin >> numero;
+    
+    verificador.setNumero(numero);
+    verificador.verificarParidad();
+    
+    return 0;
+}
+Ejercicio 29
+#include <iostream>
+
+class VoltageChecker {
+    private:
+        double voltaje1, voltaje2, voltaje3, voltaje4, voltaje5;
+    
+    public:
+        void setVoltajes(double v1, double v2, double v3, double v4, double v5) {
+            voltaje1 = v1;
+            voltaje2 = v2;
+            voltaje3 = v3;
+            voltaje4 = v4;
+            voltaje5 = v5;
+        }
+        
+        void calcularPromedio() {
+            double promedio = (voltaje1 + voltaje2 + voltaje3 + voltaje4 + voltaje5) / 5;
+            
+            if (promedio > 220) {
+                std::cout << "ALTO VOLTAJE" << std::endl;
+            } else {
+                std::cout << "VOLTAJE CORRECTO" << std::endl;
+            }
+        }
+};
+
+int main() {
+    VoltageChecker checker;
+    
+    double v1, v2, v3, v4, v5;
+    
+    std::cout << "Ingrese cinco valores de voltaje: ";
+    std::cin >> v1 >> v2 >> v3 >> v4 >> v5;
+    
+    checker.setVoltajes(v1, v2, v3, v4, v5);
+    checker.calcularPromedio();
+    
+    return 0;
+}
+Ejercicio 30
+
+#include <iostream>
+#include <cmath>
+
+class Triangulo {
+    private:
+        double ladoA;
+        double ladoB;
+        double ladoC;
+    
+    public:
+        void setLados(double a, double b, double c) {
+            ladoA = a;
+            ladoB = b;
+            ladoC = c;
+        }
+        
+        double calcularArea() {
+            double semiperimetro = (ladoA + ladoB + ladoC) / 2.0;
+            return sqrt(semiperimetro * (semiperimetro - ladoA) * (semiperimetro - ladoB) * (semiperimetro - ladoC));
+        }
+        
+        void determinarTipo() {
+            if (ladoA == ladoB && ladoB == ladoC) {
+                std::cout << "El triángulo es equilátero." << std::endl;
+            } else if (ladoA != ladoB && ladoB != ladoC && ladoA != ladoC) {
+                std::cout << "El triángulo es escaleno." << std::endl;
+            } else {
+                std::cout << "El triángulo es isósceles." << std::endl;
+            }
+        }
+};
+
+int main() {
+    Triangulo triangulo;
+    
+    double a, b, c;
+    
+    std::cout << "Ingrese las longitudes de los lados del triángulo: ";
+    std::cin >> a >> b >> c;
+    
+    triangulo.setLados(a, b, c);
+    
+    double area = triangulo.calcularArea();
+    
+    if (area > 1000) {
+        std::cout << "DATOS NO VALIDOS" << std::endl;
+    } else {
+        std::cout << "El área del triángulo es: " << area << std::endl;
+        triangulo.determinarTipo();
+    }
+    
+    return 0;
+}
+
+ejercicio 31 
+
+#include <iostream>
+
+class VerificadorVoltaje {
+    private:
+        float voltaje1;
+        float voltaje2;
+        float voltaje3;
+    
+    public:
+        void setVoltajes(float v1, float v2, float v3) {
+            voltaje1 = v1;
+            voltaje2 = v2;
+            voltaje3 = v3;
+        }
+        
+        void verificarPromedio() {
+            float promedio = (voltaje1 + voltaje2 + voltaje3) / 3.0;
+            
+            if (promedio < 115.0) {
+                std::cout << "VOLTAJE CORRECTO" << std::endl;
+            } else if (promedio >= 115.0 && promedio < 220.0) {
+                std::cout << "ALTO VOLTAJE" << std::endl;
+            } else {
+                std::cout << "PELIGRO" << std::endl;
+            }
+        }
+};
+
+int main() {
+    VerificadorVoltaje verificador;
+    
+    float v1, v2, v3;
+    
+    std::cout << "Ingrese tres voltajes distintos: ";
+    std::cin >> v1 >> v2 >> v3;
+    
+    verificador.setVoltajes(v1, v2, v3);
+    verificador.verificarPromedio();
+    
+    return 0;
+}
+ejercicio 32
+#include <iostream>
+
+class ConversorDistancia {
+    private:
+        float distanciaMetros;
+    
+    public:
+        void setDistancia(float metros) {
+            distanciaMetros = metros;
+        }
+        
+        void convertirAKilometros() {
+            float distanciaKm = distanciaMetros / 1000.0;
+            
+            std::cout << "La distancia es: " << distanciaKm << " km." << std::endl;
+        }
+};
+
+int main() {
+    ConversorDistancia conversor;
+    
+    float distanciaMetros;
+    
+    std::cout << "Ingrese la distancia en metros: ";
+    std::cin >> distanciaMetros;
+    
+    conversor.setDistancia(distanciaMetros);
+    conversor.convertirAKilometros();
+    
+    return 0;
+}
+ejercicio 33
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+class ContadorPrimos {
+    private:
+        std::vector<std::vector<int>> matriz;
+        std::vector<int> vector;
+    
+    public:
+        void setMatriz(std::vector<std::vector<int>> m) {
+            matriz = m;
+        }
+        
+        void setVector(std::vector<int> v) {
+            vector = v;
+        }
+        
+        bool esPrimo(int num) {
+            if (num < 2)
+                return false;
+            
+            for (int i = 2; i <= std::sqrt(num); i++) {
+                if (num % i == 0)
+                    return false;
+            }
+            
+            return true;
+        }
+        
+        int contarPrimos() {
+            int contador = 0;
+            
+            for (const auto& fila : matriz) {
+                for (int num : fila) {
+                    if (esPrimo(num))
+                        contador++;
+                }
+            }
+            
+            for (int num : vector) {
+                if (esPrimo(num))
+                    contador++;
+            }
+            
+            return contador;
+        }
+};
+
+int main() {
+    ContadorPrimos contador;
+    
+    std::vector<std::vector<int>> matriz {{2, 3, 4}, {5, 6, 7}, {8, 9, 10}};
+    std::vector<int> vector {11, 12, 13};
+    
+    contador.setMatriz(matriz);
+    contador.setVector(vector);
+    
+    int cantidadPrimos = contador.contarPrimos();
+    
+    std::cout << "La cantidad de números primos en la matriz y el vector es: " << cantidadPrimos << std::endl;
+    
+    return 0;
+}
+Ejercicio 34 
+#include <iostream>
+#include <string>
+
+class Persona {
+    private:
+        std::string nombre;
+        std::string apellido;
+        int edad;
+        std::string numeroCelular;
+    
+    public:
+        void setNombre(std::string n) {
+            nombre = n;
+        }
+        
+        void setApellido(std::string a) {
+            apellido = a;
+        }
+        
+        void setEdad(int e) {
+            edad = e;
+        }
+        
+        void setNumeroCelular(std::string celular) {
+            numeroCelular = celular;
+        }
+        
+        void mostrarDatos() {
+            std::cout << "Nombre: " << nombre << std::endl;
+            std::cout << "Apellido: " << apellido << std::endl;
+            std::cout << "Edad: " << edad << std::endl;
+            std::cout << "Número de celular: " << numeroCelular << std::endl;
+        }
+};
+
+int main() {
+    Persona persona;
+    
+    std::string nombre, apellido, numeroCelular;
+    int edad;
+    
+    std::cout << "Ingrese el nombre: ";
+    std::getline(std::cin, nombre);
+    
+    std::cout << "Ingrese el apellido: ";
+    std::getline(std::cin, apellido);
+    
+    std::cout << "Ingrese la edad: ";
+    std::cin >> edad;
+    
+    std::cin.ignore();  // Ignorar el salto de línea
+    
+    std::cout << "Ingrese el número de celular: ";
+    std::getline(std::cin, numeroCelular);
+    
+    persona.setNombre(nombre);
+    persona.setApellido(apellido);
+    persona.setEdad(edad);
+    persona.setNumeroCelular(numeroCelular);
+    
+    persona.mostrarDatos();
+    
+    return 0;
+}
+
+Ejercicio 35
+#include <iostream>
+#include <vector>
+
+class ProductoEscalar {
+    private:
+        std::vector<int> vector1;
+        std::vector<int> vector2;
+    
+    public:
+        void setVector1(std::vector<int> v) {
+            vector1 = v;
+        }
+        
+        void setVector2(std::vector<int> v) {
+            vector2 = v;
+        }
+        
+        int calcularProductoEscalar() {
+            int producto = 0;
+            
+            for (int i = 0; i < vector1.size(); i++) {
+                producto += vector1[i] * vector2[i];
+            }
+            
+            return producto;
+        }
+};
+
+int main() {
+    ProductoEscalar producto;
+    
+    std::vector<int> vector1 {1, 2, 3};
+    std::vector<int> vector2 {4, 5, 6};
+    
+    producto.setVector1(vector1);
+    producto.setVector2(vector2);
+    
+    int resultado = producto.calcularProductoEscalar();
+    
+    std::cout << "El producto escalar de los vectores es: " << resultado << std::endl;
+    
+    return 0;
+}
+
+Ejercicio 36
+#include <iostream>
+
+class ConversorTiempo {
+    private:
+        int minutos;
+    
+    public:
+        void setMinutos(int m) {
+            minutos = m;
+        }
+        
+        void convertirTiempo() {
+            int horas = minutos / 60;
+            int minutosRestantes = minutos % 60;
+            int segundos = minutosRestantes * 60;
+            
+            std::cout << "Tiempo: " << horas << " horas, " << minutosRestantes << " minutos, " << segundos << " segundos." << std::endl;
+        }
+};
+
+int main() {
+    ConversorTiempo conversor;
+    
+    int tiempoMinutos;
+    
+    std::cout << "Ingrese el tiempo en minutos: ";
+    std::cin >> tiempoMinutos;
+    
+    conversor.setMinutos(tiempoMinutos);
+    conversor.convertirTiempo();
+    
+    return 0;
+}
+Ejercicio 37 
+#include <iostream>
+#include <cmath>
+
+int main() {
+    int numero;
+    
+    std::cout << "Ingrese un número entero: ";
+    std::cin >> numero;
+    
+    int valorAbsoluto = std::abs(numero);
+    
+    std::cout << "El valor absoluto del número es: " << valorAbsoluto << std::endl;
+    
+    return 0;
+}
+
+Ejercicio 38
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::vector<int> numeros {5, 2, 8, 1, 9};
+    
+    std::sort(numeros.begin(), numeros.end(), std::greater<int>());
+    
+    std::cout << "Vector ordenado de mayor a menor: ";
+    for (int num : numeros) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+    
+    return 0;
+}
+
+ejercicio 40 
+
+#include <iostream>
+
+int main() {
+    int consumoKw = 10000;
+    double eficiencia = 0.0;
+    
+    if (consumoKw >= 8000 && consumoKw <= 10000) {
+        eficiencia = 0.8;
+        std::cout << "CONSUMO MEDIO" << std::endl;
+    } else if (consumoKw > 10000) {
+        eficiencia = 1.0;
+        std::cout << "ALTO CONSUMO DE ENERGIA" << std::endl;
+    }
+    
+    std::cout << "Eficiencia energética de la Central Eléctrica del Guri: " << eficiencia << std::endl;
+    
+    return 0;
+}
+
+Ejercicio 41 
+#include <iostream>
+
+int main() {
+    int numero1, numero2;
+    
+    std::cout << "Ingrese el primer número: ";
+    std::cin >> numero1;
+    
+    std::cout << "Ingrese el segundo número: ";
+    std::cin >> numero2;
+    
+    int suma = numero1 + numero2;
+    int resta = numero1 - numero2;
+    
+    if (suma % resta == 0) {
+        std::cout << "La división de la suma entre la resta es exacta." << std::endl;
+    } else {
+        std::cout << "La división de la suma entre la resta no es exacta." << std::endl;
+    }
+    
+    return 0;
+}
+Ejercicio 42
+#include <iostream>
+
+bool esBisiesto(int year) {
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            if (year % 400 == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
+int main() {
+    int year;
+    
+    std::cout << "Ingrese un año: ";
+    std::cin >> year;
+    
+    if (esBisiesto(year)) {
+        std::cout << year << " es un año bisiesto." << std::endl;
+    } else {
+        std::cout << year << " no es un año bisiesto." << std::endl;
+    }
+    
+    return 0;
+}
+
+Ejercicio 43
+#include <iostream>
+
+int main() {
+    int numero1, numero2;
+    
+    std::cout << "Ingrese el primer número: ";
+    std::cin >> numero1;
+    
+    std::cout << "Ingrese el segundo número: ";
+    std::cin >> numero2;
+    
+    int suma = numero1 + numero2;
+    
+    if (suma % 2 == 0) {
+        std::cout << "La suma de los dos números es par." << std::endl;
+    } else {
+        std::cout << "La suma de los dos números es impar." << std::endl;
+    }
+    
+    return 0;
+}
+
+Ejercicio 44
+#include <iostream>
+
+int main() {
+    int numero1, numero2;
+    
+    std::cout << "Ingrese el primer número: ";
+    std::cin >> numero1;
+    
+    std::cout << "Ingrese el segundo número: ";
+    std::cin >> numero2;
+    
+    if (numero1 % numero2 == 0) {
+        std::cout << "El primer número es divisible por el segundo número." << std::endl;
+    } else {
+        std::cout << "El primer número no es divisible por el segundo número." << std::endl;
+    }
+    
+    return 0;
+}
+Ejercicio 45 
+#include <iostream>
+
+int main() {
+    int horasTrabajadas;
+    double tarifa, salario;
+    
+    std::cout << "Ingrese las horas trabajadas: ";
+    std::cin >> horasTrabajadas;
+    
+    std::cout << "Ingrese la tarifa por hora: ";
+    std::cin >> tarifa;
+    
+    if (horasTrabajadas > 40) {
+        int horasExtras = horasTrabajadas - 40;
+        double tarifaExtras = tarifa * 1.25;
+        salario = 40 * tarifa + horasExtras * tarifaExtras;
+    } else {
+        salario = horasTrabajadas * tarifa;
+    }
+    
+    std::cout << "El salario del trabajador es: " << salario << std::endl;
+    
+    return 0;
+}
+Ejercicio 46 
+#include <iostream>
+
+int main() {
+    int numero1, numero2, numero3;
+    
+    std::cout << "Ingrese el primer número: ";
+    std::cin >> numero1;
+    
+    std::cout << "Ingrese el segundo número: ";
+    std::cin >> numero2;
+    
+    std::cout << "Ingrese el tercer número: ";
+    std::cin >> numero3;
+    
+    int menor = numero1;
+    int mayor = numero1;
+    
+    if (numero2 < menor) {
+        menor = numero2;
+    }
+    
+    if (numero2 > mayor) {
+        mayor = numero2;
+    }
+    
+    if (numero3 < menor) {
+        menor = numero3;
+    }
+    
+    if (numero3 > mayor) {
+        mayor = numero3;
+    }
+    
+    std::cout << "El número menor ingresado es: " << menor << std::endl;
+    std::cout << "El número mayor ingresado es: " << mayor << std::endl;
+    
+    return 0;
+}
+Ejercicio 47 
+#include <iostream>
+#include <cmath>
+
+int main() {
+    double numero, indice;
+    
+    std::cout << "Ingrese el número: ";
+    std::cin >> numero;
+    
+    std::cout << "Ingrese el índice de la raíz: ";
+    std::cin >> indice;
+    
+    double resultado = pow(numero, 1.0 / indice);
+    
+    std::cout << "La raíz " << indice << " de " << numero << " es: " << resultado << std::endl;
+    
+    return 0;
+}
+
+Ejercicio 48 
+#include <iostream>
+
+int main() {
+    double nota1, nota2, nota3, nota4;
+    double promedio;
+    
+    std::cout << "Ingrese la primera nota: ";
+    std::cin >> nota1;
+    
+    std::cout << "Ingrese la segunda nota: ";
+    std::cin >> nota2;
+    
+    std::cout << "Ingrese la tercera nota: ";
+    std::cin >> nota3;
+    
+    std::cout << "Ingrese la cuarta nota: ";
+    std::cin >> nota4;
+    
+    promedio = (nota1 + nota2 + nota3 + nota4) / 4.0;
+    
+    if (promedio > 14.5) {
+        std::cout << "APROBADO" << std::endl;
+    } else if (promedio > 10) {
+        std::cout << "SUPLETORIO" << std::endl;
+    } else {
+        std::cout << "PERDIDO EL AÑO" << std::endl;
+    }
+    
+    return 0;
+}
+
+Ejercicio 49 
+#include <iostream>
+
+int calcularMCD(int m, int n) {
+    // Aplicar el algoritmo de Euclides
+    int r;
+    while (n != 0) {
+        r = m % n;
+        m = n;
+        n = r;
+    }
+    return m;
+}
+
+int main() {
+    int numero1, numero2;
+    
+    std::cout << "Ingrese el primer número: ";
+    std::cin >> numero1;
+    
+    std::cout << "Ingrese el segundo número: ";
+    std::cin >> numero2;
+    
+    // Asegurarse de que m > n
+    if (numero1 < numero2) {
+        int temp = numero1;
+        numero1 = numero2;
+        numero2 = temp;
+    }
+    
+    // Calcular el MCD utilizando la función calcularMCD()
+    int resultado = calcularMCD(numero1, numero2);
+    
+    std::cout << "El máximo común divisor de " << numero1 << " y " << numero2 << " es: " << resultado << std::endl;
+    
+    return 0;
+}
+Ejercicio 50 
+#include <iostream>
+#include <string>
+
+int main() {
+    std::string apellido;
+    int edad;
+    
+    std::cout << "Ingrese el apellido del estudiante: ";
+    std::cin >> apellido;
+    
+    std::cout << "Ingrese la edad del estudiante: ";
+    std::cin >> edad;
+    
+    if (edad > 18 && edad < 25) {
+        std::cout << "El estudiante " << apellido << " es BECADO" << std::endl;
+    } else {
+        std::cout << "El estudiante " << apellido << " es SIN BECA" << std::endl;
+    }
+    
+    return 0;
+}
